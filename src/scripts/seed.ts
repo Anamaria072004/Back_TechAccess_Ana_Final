@@ -1,6 +1,6 @@
 import { AppDataSource } from '../database/data-source';
-import { User } from '../users/entities/user.entity';
-import { Role } from '../roles/entities/role.entity';
+import { User } from 'src/features/users/entities/user.entity';
+import { Role } from 'src/features/roles/entities/role.entity';
 import { ModuleEntity } from '../modules/entities/module.entity';
 import * as bcrypt from 'bcrypt';
 
