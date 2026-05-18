@@ -25,6 +25,11 @@ export class UsersController {
         return this.usersService.findOne(userId);
     }
 
+    @Get('documento/:docNumber')
+    findDocumento(@Param('docNumber', ParseIntPipe) docNumber: string){
+        return this.usersService.findByDocumento(docNumber);
+    }
+
     @Post()
     createUser(@Body() payload: CreateUserDto){
         return this.usersService.create(payload);
