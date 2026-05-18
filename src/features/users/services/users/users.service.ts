@@ -10,6 +10,7 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
+
     constructor(
         @InjectRepository(User) private userRepo: Repository<User>,
         private rolesService: RolesService,
@@ -171,5 +172,19 @@ export class UsersService {
 
         // Guardamos los cambios en PostgreSQL
         return await this.userRepo.save(user);
+    }
+
+    async findByDocumento (docNumber: string){
+        const user = await this.userRepo.findOne({
+            where: { docNumber },
+            relations: ['roles', 'fichas']
+        });
+
+        if (!user) {
+            throw new  NotFoundException
+            (`documento N° ${docNumber} no encontrado`);            
+        }
+
+        return user;
     }
 }
