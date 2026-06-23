@@ -20,4 +20,7 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: [join(__dirname, '..', '**', '*.entity.{ts,js}')],
   migrations: [join(__dirname, 'migrations', '*.{ts,js}')],
+  
+  // ⚡ SE AGREGA CONFIGURACIÓN SSL PARA EL CLI EN RENDER:
+  ssl: configuration.dataBase.host === 'localhost' ? false : { rejectUnauthorized: false },
 });
