@@ -68,8 +68,7 @@ export class AuthService {
             const recoveryToken = this.jwtService.sign(payload, { expiresIn: '15m' });
 
             // 2. Creas la URL que apunta a tu FRONTEND de Angular
-            const recoveryUrl = `http://localhost:4200/auth/reset-password?token=${recoveryToken}`;
-
+           const recoveryUrl = `${process.env.FRONTEND_URL}/auth/reset-password?token=${recoveryToken}`;
             // 3. Envías el correo con el link de recuperación
             this.mailerService.sendMail({
                 to: user.email,
