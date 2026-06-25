@@ -21,19 +21,20 @@ import { MailerModule } from '@nestjs-modules/mailer';
     MailerModule.forRootAsync({
       inject: [config.KEY],
       useFactory: (configType: ConfigType<typeof config>) => ({
-        transport: {
-          host: configType.email.host,
-          port: configType.email.port,
-          secure: false,
-          auth: {
-            user: configType.email.user,
-            pass: configType.email.pass,
-          },
-        },
-        defaults: {
-          from: `"TechAccess Support" <${configType.email.user}>`,
-        },
-      }), 
+  transport: {
+    host: configType.email.host,
+    port: configType.email.port,
+    secure: false, 
+    requireTLS: true, 
+    auth: {
+      user: configType.email.user,
+      pass: configType.email.pass,
+    },
+  },
+  defaults: {
+    from: `"TechAccess Support" <${configType.email.user}>`,
+  },
+}), 
     }), 
     
     // Configuración del JWT
