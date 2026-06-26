@@ -66,10 +66,10 @@ export class AuthService {
             sendSmtpEmail.subject = 'Recuperación de contraseña - TechAccess';
             sendSmtpEmail.htmlContent = `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
-                    <h2 style="color: #38a800;">Hola, ${user.name || 'Usuario'}</h2>
+                    <h2 style="color: #0712a9;">Hola, ${user.name || 'Usuario'}</h2>
                     <p>Has solicitado restablecer tu contraseña en <strong>TechAccess</strong>.</p>
                     <div style="text-align: center; margin: 30px 0;">
-                        <a href="${recoveryUrl}" style="background-color: #38a800; color: white; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px;">
+                        <a href="${recoveryUrl}" style="background-color: #060479; color: white; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px;">
                             Restablecer Contraseña
                         </a>
                     </div>
