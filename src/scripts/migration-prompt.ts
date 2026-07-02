@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 // import * as prompts from 'prompts';
+//
 import prompts from 'prompts';
 import { execSync } from 'child_process';
 import { join } from 'path';
