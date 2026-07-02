@@ -14,11 +14,11 @@ FROM node:20-alpine AS production
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --omit=dev && npm install ts-node tsconfig-paths
+RUN npm install --omit=dev
 
 COPY --from=build /app/dist ./dist
 
 EXPOSE 3000
 
-# ✅ SOLUCIÓN RÁPIDA: Ejecutar migraciones y luego mantener el servidor
-CMD ["sh", "-c", "npm run migration:run && exec node dist/main.js"]
+# Este CMD inicia el servidor
+CMD ["node", "dist/main.js"]
