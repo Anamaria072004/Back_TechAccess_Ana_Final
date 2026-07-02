@@ -3,7 +3,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -53,19 +52,10 @@ async function bootstrap() {
   logger.log(`🚀 Application running on port: ${port}`);
   logger.log(`📡 CORS allowed origins: ${corsOrigins.join(', ')}`);
   
-  // Mostrar todas las rutas disponibles (para debug)
-  const server = app.getHttpServer();
-  const router = server._events.request._router;
-  const routes = router.stack
-    .filter(layer => layer.route)
-    .map(layer => ({
-      path: layer.route?.path,
-      methods: Object.keys(layer.route?.methods || {}).join(', ').toUpperCase(),
-    }));
-  
-  logger.log('📋 Rutas registradas:');
-  routes.forEach(route => {
-    logger.log(`  ${route.methods} ${route.path}`);
-  });
+  // ❌ ELIMINA ESTE CÓDIGO DE DEBUG:
+  // const server = app.getHttpServer();
+  // const router = server._events.request._router;
+  // const routes = router.stack...
+  // routes.forEach(route => { ... });
 }
 bootstrap();
